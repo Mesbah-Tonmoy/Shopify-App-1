@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+})->middleware(['verify.shopify'])->name('home');
 
-Route::get('/', [\App\Http\Controllers\CollectionController::class, 'index'])->middleware(['verify.shopify'])->name('home');
+Route::get('/collections', [\App\Http\Controllers\CollectionController::class, 'index'])->middleware(['verify.shopify'])->middleware(['verify.shopify'])->name('collections');
 
 Route::get('/products',[\App\Http\Controllers\CollectionController::class, 'index'])
     ->middleware(['verify.shopify'])->name('product.index');

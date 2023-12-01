@@ -16,9 +16,8 @@ class CollectionController extends Controller
                 id
                 title
                 handle
-                updatedAt
+                description
                 productsCount
-                sortOrder
                 }
             }
             }
@@ -27,8 +26,8 @@ class CollectionController extends Controller
         
         $shop = Auth::user();
         $data = $shop->api()->graph($query);
-        $products   = $data['body']['data']['collections']['edges'];
-        dd($products);
-        // return view('welcome', compact('products'));
+        $collections   = $data['body']['data']['collections']['edges'];
+        // dd($collections);
+        return view('collections', compact('collections'));
     }
 }
