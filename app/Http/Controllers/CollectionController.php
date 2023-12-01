@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
 
-class ProductController extends Controller
+class CollectionController extends Controller
 {
     public function index()
     {
@@ -26,13 +24,10 @@ class ProductController extends Controller
             }
         }
         QUERY;
-
-        // $req = Http::withHeader({
-        //     'Content-Type': 
-        // })
+        
         $shop = Auth::user();
         $data = $shop->api()->graph($query);
-        $products   = $data['body']['data'];
+        $products   = $data['body']['data']['collections']['edges'];
         dd($products);
         // return view('welcome', compact('products'));
     }

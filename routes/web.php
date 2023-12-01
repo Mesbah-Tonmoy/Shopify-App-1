@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->middleware(['verify.shopify'])->name('home');
+Route::get('/', [\App\Http\Controllers\CollectionController::class, 'index'])->middleware(['verify.shopify'])->name('home');
 
-Route::get('/products',[\App\Http\Controllers\ProductController::class, 'index'])
+Route::get('/products',[\App\Http\Controllers\CollectionController::class, 'index'])
     ->middleware(['verify.shopify'])->name('product.index');
